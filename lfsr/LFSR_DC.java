@@ -18,8 +18,8 @@
  * @Java 1.8.0 - 10/6/20
  */
 public class LFSR_DC {
-    private int[] bits;
-    private int tap;
+    private int[] bits; // store the bits
+    private int tap; // store the provided tap position
 
     // creates an LFSR with the specified seed and tap
     public LFSR_DC(String seed, int tap) {
@@ -78,6 +78,7 @@ public class LFSR_DC {
         StdOut.println("Test 0");
         LFSR_DC lfsr0 = new LFSR_DC("01101000010", 9);
         StdOut.println(lfsr0);
+
         StdOut.println("Test 1");
         LFSR_DC lfsr1 = new LFSR_DC("01101000010", 9);
         StdOut.println(lfsr1);
@@ -85,6 +86,7 @@ public class LFSR_DC {
             int bit = lfsr1.step();
             StdOut.println(lfsr1 + " " + bit);
         }
+
         StdOut.println("Test 2");
         LFSR_DC lfsr2 = new LFSR_DC("01101000010", 9);
         StdOut.println(lfsr2);

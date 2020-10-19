@@ -26,13 +26,15 @@ public class PhotoMagic_DC {
     public static Picture transform(Picture picture, LFSR_DC lfsr) {
         int width = picture.width();
         int height = picture.height();
-        Picture newPicture = new Picture(width, height);
+        Picture newPicture = new Picture(width, height); // initialize new picture
         for (int col = 0; col < width; col++) {
             for (int row = 0; row < height; row++) {
                 Color color = picture.get(col, row);
+                // grab color components
                 int r = color.getRed();
                 int g = color.getGreen();
                 int b = color.getBlue();
+                // xor with newly generated 8 bits
                 int newR = r ^ lfsr.generate(8);
                 int newG = g ^ lfsr.generate(8);
                 int newB = b ^ lfsr.generate(8);
@@ -50,8 +52,8 @@ public class PhotoMagic_DC {
         Picture picture = new Picture(args[0]);
         String seed = args[1];
         int tap = Integer.parseInt(args[2]);
-        LFSR_DC lfsr = new LFSR_DC(seed, tap);
-        Picture newPicture = transform(picture, lfsr);
-        newPicture.show();
+        LFSR_DC lfsr = new LFSR_DC(seed, tap); // initialize lfsr
+        Picture newPicture = transform(picture, lfsr); // encrypt/decrypt
+        newPicture.show(); // show result
     }
 }
