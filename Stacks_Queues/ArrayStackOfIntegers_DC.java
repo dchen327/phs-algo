@@ -23,15 +23,16 @@ public class ArrayStackOfIntegers_DC implements Iterable {
         n = 0;
     }
 
+    // tester code
     public static void main(String[] args) {
         ArrayStackOfIntegers_DC stack = new ArrayStackOfIntegers_DC(5);
         stack.push(1);
         stack.push(2);
         stack.push(3);
         System.out.println(stack);
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
+        System.out.println("Pop: " + stack.pop());
+        System.out.println("Pop: " + stack.pop());
+        System.out.println("Pop: " + stack.pop());
         System.out.println("Empty? " + stack.isEmpty());
         stack.push(5);
         stack.push(4);
@@ -41,6 +42,10 @@ public class ArrayStackOfIntegers_DC implements Iterable {
         stack.push(100);
         System.out.println(stack);
         System.out.println("Full? " + stack.isFull());
+        System.out.println("Testing iteration:");
+        for (Object i : stack) {
+            System.out.print(i + " ");
+        }
     }
 
     public boolean isEmpty() {
@@ -66,6 +71,7 @@ public class ArrayStackOfIntegers_DC implements Iterable {
     }
 
     public String toString() {
+        // print out stack from bottom to top
         String s = "";
         for (int i = 0; i < n; i++) {
             s += Integer.toString(items[i]) + " ";
@@ -101,11 +107,13 @@ public class ArrayStackOfIntegers_DC implements Iterable {
 // output
 /*
 1 2 3 
-3
-2
-1
+Pop: 3
+Pop: 2
+Pop: 1
 Empty? true
 Unable to push, stack is full.
 5 4 3 2 1 
 Full? true
+Testing iteration:
+1 2 3 4 5
  */
