@@ -10,7 +10,7 @@
 
 public class ArrayStackOfIntegersCalculator_DC {
     public static void main(String[] args) {
-        System.out.println(calculatePostfix("8 4 -3 * 1 5 + / *"));
+        System.out.println(calculatePostfix("5 3 2 * 8 + *"));
     }
 
     // calculate an expression provided in postfix notation
@@ -45,3 +45,15 @@ public class ArrayStackOfIntegersCalculator_DC {
         return -1000000000;
     }
 }
+
+// input/output
+/*
+8 4 - 3 * 1 5 + / *
+16
+
+10 2 8 * + 3 -
+-23
+
+5 3 2 * 8 + *
+70
+*/
