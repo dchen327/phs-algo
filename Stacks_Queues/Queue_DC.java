@@ -61,4 +61,38 @@ public class Queue_DC implements QueueADT {
         }
         return s;
     }
+
+    // test queue functions
+    public static void main(String[] args) {
+        Queue_DC queue = new Queue_DC();
+        queue.enqueue("person 1");
+        queue.enqueue("person 2");
+        queue.enqueue("person 3");
+        queue.enqueue("person 4");
+        queue.enqueue("person 5");
+        System.out.println(queue);
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Dequeue: " + queue.dequeue());
+        System.out.println("Size: " + queue.size());
+        System.out.println(queue);
+        System.out.println("First: " + queue.first());
+    }
 }
+
+// the output
+/**
+person 1
+person 2
+person 3
+person 4
+person 5
+
+Dequeue: person 1
+Dequeue: person 2
+Size: 3
+person 3
+person 4
+person 5
+
+First: person 3
+ */
