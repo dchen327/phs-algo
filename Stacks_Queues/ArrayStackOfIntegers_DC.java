@@ -23,31 +23,6 @@ public class ArrayStackOfIntegers_DC implements Iterable {
         n = 0;
     }
 
-    // tester code
-    public static void main(String[] args) {
-        ArrayStackOfIntegers_DC stack = new ArrayStackOfIntegers_DC(5);
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        System.out.println(stack);
-        System.out.println("Pop: " + stack.pop());
-        System.out.println("Pop: " + stack.pop());
-        System.out.println("Pop: " + stack.pop());
-        System.out.println("Empty? " + stack.isEmpty());
-        stack.push(5);
-        stack.push(4);
-        stack.push(3);
-        stack.push(2);
-        stack.push(1);
-        stack.push(100);
-        System.out.println(stack);
-        System.out.println("Full? " + stack.isFull());
-        System.out.println("Testing iteration:");
-        for (Object i : stack) {
-            System.out.print(i + " ");
-        }
-    }
-
     public boolean isEmpty() {
         return n == 0;
     }
@@ -101,6 +76,31 @@ public class ArrayStackOfIntegers_DC implements Iterable {
         }
 
         public void remove() {
+        }
+    }
+
+    // tester code
+    public static void main(String[] args) {
+        ArrayStackOfIntegers_DC stack = new ArrayStackOfIntegers_DC(5);
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        System.out.println(stack);
+        System.out.println("Pop: " + stack.pop());
+        System.out.println("Pop: " + stack.pop());
+        System.out.println("Pop: " + stack.pop());
+        System.out.println("Empty? " + stack.isEmpty());
+        stack.push(5);
+        stack.push(4);
+        stack.push(3);
+        stack.push(2);
+        stack.push(1);
+        stack.push(100);
+        System.out.println(stack);
+        System.out.println("Full? " + stack.isFull());
+        System.out.println("Testing iteration:");
+        for (Object i : stack) {
+            System.out.print(i + " ");
         }
     }
 }
