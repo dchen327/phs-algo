@@ -64,7 +64,7 @@ public class ArrayStackOfIntegers_DC implements Iterable {
         int pos; // stores position in array
 
         public ReverseArrayIterator() {
-            pos = n - 1;
+            pos = n - 1; // start at the end of the array
         }
 
         public boolean hasNext() {
