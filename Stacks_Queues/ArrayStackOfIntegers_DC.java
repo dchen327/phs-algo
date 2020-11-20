@@ -67,10 +67,12 @@ public class ArrayStackOfIntegers_DC implements Iterable {
             pos = n - 1; // start at the end of the array
         }
 
+        @Override
         public boolean hasNext() {
             return pos >= 0;
         }
 
+        @Override
         public Integer next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
@@ -78,6 +80,7 @@ public class ArrayStackOfIntegers_DC implements Iterable {
             return items[pos--];
         }
 
+        @Override
         public void remove() {
         }
     }
