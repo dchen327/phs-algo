@@ -72,6 +72,9 @@ public class ArrayStackOfIntegers_DC implements Iterable {
         }
 
         public Integer next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
             return items[pos--];
         }
 
