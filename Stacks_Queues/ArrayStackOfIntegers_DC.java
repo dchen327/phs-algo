@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 public class ArrayStackOfIntegers_DC implements Iterable {
     private Integer[] items; // holds the items
-    private int n; // number of items in stack
+    private int n; // number of items in stack and index of top element
 
     public ArrayStackOfIntegers_DC(int capacity) {
         items = new Integer[capacity];
@@ -61,7 +61,7 @@ public class ArrayStackOfIntegers_DC implements Iterable {
     // an iterator, doesn't implement remove() since it's optional
     private class ReverseArrayIterator implements Iterator {
 
-        int pos; // stores position in array
+        private int pos; // stores position in array
 
         public ReverseArrayIterator() {
             pos = n - 1; // start at the end of the array
@@ -110,6 +110,31 @@ public class ArrayStackOfIntegers_DC implements Iterable {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // output
 /*
 1 2 3 

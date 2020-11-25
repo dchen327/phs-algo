@@ -188,5 +188,54 @@ Lane 4: 92
 
 
 Simulating low traffic:
+Max cars: 5, max light change time: 10
+Lane 1: 0
+Lane 2: 0
+Lane 3: 0
+Lane 4: 0
 
+Lane 1: 0
+Lane 2: 0
+Lane 3: 0
+Lane 4: 0
+
+Lane 1: 0
+Lane 2: 0
+Lane 3: 0
+Lane 4: 0
+
+Lane 1: 0
+Lane 2: 0
+Lane 3: 0
+Lane 4: 0
+
+Lane 1: 0
+Lane 2: 1
+Lane 3: 0
+Lane 4: 0
+
+Lane 1: 1
+Lane 2: 1
+Lane 3: 0
+Lane 4: 0
+
+Lane 1: 1
+Lane 2: 1
+Lane 3: 0
+Lane 4: 0
+
+Lane 1: 2
+Lane 2: 1
+Lane 3: 0
+Lane 4: 0
+
+Lane 1: 0
+Lane 2: 0
+Lane 3: 0
+Lane 4: 0
+
+Lane 1: 0
+Lane 2: 0
+Lane 3: 0
+Lane 4: 0
  */
