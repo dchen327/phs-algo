@@ -15,6 +15,10 @@ public class QSPalindrome_DC {
             queue.enqueue(value); // add string to queue
             stack.push(digit); // add int to stack
         }
+        // simultaneously pop from stack and dequeue from queue
+        // thus, we compare the first element to the last, the second to the second to last, etc.
+        // if the values aren't equal, return false
+        // return true if we haven't returned false
         for (int i = 0; i < s.length(); i++) {
             String value = queue.dequeue();
             int digit = stack.pop();
@@ -26,6 +30,7 @@ public class QSPalindrome_DC {
     }
 
     public static void main(String[] args) {
+        // tester code for palindromes
         QSPalindrome_DC palindromeChecker = new QSPalindrome_DC();
         String s = "0123210";
         System.out.println("Is " + s + " a palindrome? " + palindromeChecker.isPalindrome(s));
@@ -35,3 +40,9 @@ public class QSPalindrome_DC {
         System.out.println("Is " + s + " a palindrome? " + palindromeChecker.isPalindrome(s));
     }
 }
+// the output
+/**
+Is 0123210 a palindrome? true
+Is 0001238090918320 a palindrome? false
+Is 08000131711713100080 a palindrome? true
+ */
