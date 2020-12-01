@@ -17,12 +17,25 @@ public class Set_DC {
         if (headNode == null) { // first element, set to head
             headNode = new Node_DC(s);
         }
-        System.out.println(headNode);
+        if (headNode.getValue().equals(s)) { // value already present
+            return;
+        }
+        // traverse to the end of the linked list
+        Node_DC nextNode = headNode;
+        while (nextNode.getNext() != null) {
+            nextNode = nextNode.getNext();
+            if (nextNode.getValue().equals(s)) { // value already present
+                return;
+            }
+        }
+        nextNode.setNext(new Node_DC(s));
     }
 
     public static void main(String[] args) {
         Set_DC set = new Set_DC();
-        System.out.println(set);
         set.add("first");
+        set.add("second");
+        set.add("first");
+        System.out.println(set);
     }
 }
