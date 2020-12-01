@@ -64,13 +64,11 @@ public class Set_DC implements Iterable<String> {
     }
 
     public boolean equals(Set_DC compSet) { // check if equal to another set by making sure all elements in one set are present in the other
+        if (size() != compSet.size()) {
+            return false;
+        }
         for (String value : this) {
             if (!compSet.contains(value)) {
-                return false;
-            }
-        }
-        for (String value : compSet) {
-            if (!contains(value)) {
                 return false;
             }
         }
@@ -92,10 +90,28 @@ public class Set_DC implements Iterable<String> {
                 currNode.setNext(currNode.getNext().getNext());
                 return true;
             }
-            currNode = currNode.getNext();
+            currNode = currNode.getNext(); // continue traversal
         }
         return false;
 
+    }
+
+    public boolean removeAll(ArrayList<String> values) { // remove all values
+        boolean removed = false; // return true if at least one value removed
+        for (String value : values) {
+            if (remove(value)) {
+                removed = true;
+            }
+        }
+        return removed;
+    }
+
+    public int size() {
+        int t = 0;
+        for (String s : this) {
+            t++;
+        }
+        return t;
     }
 
     public Iterator<String> iterator() {
@@ -137,6 +153,7 @@ public class Set_DC implements Iterable<String> {
         for (String s : set) {
             System.out.println(s);
         }
+        System.out.println(set.size());
         // System.out.println(set.contains("second"));
     }
 }
