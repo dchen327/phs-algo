@@ -1,5 +1,9 @@
 /**
- * Create a Node class for a linked list
+ * Implement the ADT Set, Set_YI.java with the methods below. The Set ADT 
+ * uses a LinkedList structure. ‌ In mathematics, a Set is a well-defined 
+ * collection of distinct objects, considered as an object in its own
+ * right. In this implementation of Set, the Set ADT behaves like a
+ * LinkedList but it doesn’t allow duplicates. Create a Node class.
  * 
  * @David Chen
  * @Java 1.8.0 - 12/1/20
