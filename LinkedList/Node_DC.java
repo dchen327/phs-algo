@@ -1,3 +1,10 @@
+/**
+ * Create a Node class for a linked list
+ * 
+ * @David Chen
+ * @Java 1.8.0 - 12/1/20
+ */
+
 public class Node_DC {
     private String value;
     private Node_DC nextNode;
@@ -12,7 +19,7 @@ public class Node_DC {
         this.nextNode = nextNode;
     }
 
-    public Node_DC getValue() {
+    public String getValue() {
         return this.value;
     }
 
@@ -26,5 +33,12 @@ public class Node_DC {
 
     public void setNext(Node_DC nextNode) {
         this.nextNode = nextNode;
+    }
+
+    public static void main(String[] args) {
+        Node_DC head = new Node_DC("1st");
+        Node_DC node2 = new Node_DC("2nd");
+        head.setNext(node2);
+        System.out.println(head.getNext());
     }
 }
