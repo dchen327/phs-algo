@@ -54,6 +54,15 @@ public class Set_DC implements Iterable<String> {
         return false;
     }
 
+    public boolean containsAll(ArrayList<String> values) { // check if all are present
+        for (String value : values) {
+            if (!contains(value)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public Iterator<String> iterator() {
         return new SetIterator(headNode);
     }
