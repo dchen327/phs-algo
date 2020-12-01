@@ -77,6 +77,27 @@ public class Set_DC implements Iterable<String> {
         return true;
     }
 
+    public boolean isEmpty() { // check if set is empty
+        return headNode == null;
+    }
+
+    public boolean remove(String s) {
+        if (headNode.getValue().equals(s)) { // check if head node is to be removed
+            headNode = headNode.getNext();
+            return true;
+        }
+        Node_DC currNode = headNode;
+        while (currNode.getNext() != null) {
+            if (currNode.getNext().getValue().equals(s)) { // remove next node
+                currNode.setNext(currNode.getNext().getNext());
+                return true;
+            }
+            currNode = currNode.getNext();
+        }
+        return false;
+
+    }
+
     public Iterator<String> iterator() {
         return new SetIterator(headNode);
     }
@@ -112,9 +133,10 @@ public class Set_DC implements Iterable<String> {
         set.add("second");
         set.add("first");
         set.add("third");
+        System.out.println(set.remove("second"));
         for (String s : set) {
             System.out.println(s);
         }
-        System.out.println(set.contains("second"));
+        // System.out.println(set.contains("second"));
     }
 }
