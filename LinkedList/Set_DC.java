@@ -63,6 +63,20 @@ public class Set_DC implements Iterable<String> {
         return true;
     }
 
+    public boolean equals(Set_DC compSet) { // check if equal to another set by making sure all elements in one set are present in the other
+        for (String value : this) {
+            if (!compSet.contains(value)) {
+                return false;
+            }
+        }
+        for (String value : compSet) {
+            if (!contains(value)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public Iterator<String> iterator() {
         return new SetIterator(headNode);
     }
