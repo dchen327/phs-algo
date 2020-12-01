@@ -10,6 +10,9 @@
  * @Java 1.8.0 - 12/1/20
  */
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class Set_DC {
     private Node_DC headNode;
 
@@ -29,6 +32,34 @@ public class Set_DC {
             }
         }
         nextNode.setNext(new Node_DC(s));
+    }
+
+    public Iterator<String> iterator() {
+        return new SetIterator(headNode);
+    }
+
+    private class SetIterator implements Iterator<String> {
+        private Node_DC currNode;
+
+        public SetIterator(Node_DC headNode) {
+            currNode = headNode;
+        }
+
+        public boolean hasNext() {
+            return currNode != null;
+        }
+
+        public void remove() {
+
+        }
+
+        public String next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            currNode = currNode.getNext();
+            return currNode.getValue();
+        }
     }
 
     public static void main(String[] args) {
