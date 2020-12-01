@@ -13,7 +13,7 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Set_DC {
+public class Set_DC implements Iterable<String> {
     private Node_DC headNode;
 
     public void add(String s) {
@@ -57,8 +57,9 @@ public class Set_DC {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
+            String currValue = currNode.getValue();
             currNode = currNode.getNext();
-            return currNode.getValue();
+            return currValue;
         }
     }
 
@@ -67,6 +68,8 @@ public class Set_DC {
         set.add("first");
         set.add("second");
         set.add("first");
-        System.out.println(set);
+        for (String s : set) {
+            System.out.println(s);
+        }
     }
 }
