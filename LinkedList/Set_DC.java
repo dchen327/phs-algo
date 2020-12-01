@@ -12,11 +12,12 @@
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.ArrayList;
 
 public class Set_DC implements Iterable<String> {
     private Node_DC headNode;
 
-    public void add(String s) {
+    public void add(String s) { // add value to set
         if (headNode == null) { // first element, set to head
             headNode = new Node_DC(s);
         }
@@ -32,6 +33,25 @@ public class Set_DC implements Iterable<String> {
             }
         }
         nextNode.setNext(new Node_DC(s));
+    }
+
+    public void addAll(ArrayList<String> values) { // add all values to set
+        for (String value : values) {
+            add(value);
+        }
+    }
+
+    public void clear() { // effectively clear the set (this will cause memory leaks I think)
+        headNode = null;
+    }
+
+    public boolean contains(String s) {
+        for (String val : this) { // traverse set to search for s
+            if (s.equals(val)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Iterator<String> iterator() {
@@ -68,8 +88,10 @@ public class Set_DC implements Iterable<String> {
         set.add("first");
         set.add("second");
         set.add("first");
+        set.add("third");
         for (String s : set) {
             System.out.println(s);
         }
+        System.out.println(set.contains("second"));
     }
 }
