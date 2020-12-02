@@ -13,6 +13,7 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Set_DC implements Iterable<String> {
     private Node_DC headNode;
@@ -149,11 +150,23 @@ public class Set_DC implements Iterable<String> {
         set.add("second");
         set.add("first");
         set.add("third");
-        System.out.println(set.remove("second"));
-        for (String s : set) {
+        set.add("third");
+        System.out.println("Did we remove second? " + set.remove("second"));
+        System.out.println("Set contents:");
+        for (String s : set) { // testing iteration
             System.out.println(s);
         }
-        System.out.println(set.size());
-        // System.out.println(set.contains("second"));
+        System.out.println("Size: " + set.size());
+        System.out.println("Contains third? " + set.contains("third"));
+        System.out.println("Contains eighth? " + set.contains("eighth"));
+        // put some test values into an ArrayList
+        ArrayList<String> values = new ArrayList<String>(Arrays.asList("first", "second", "fourth", "fifth"));
+        System.out.println("ArrayList: " + values);
+        System.out.println("Set contains all values? " + set.containsAll(values));
+        set.addAll(values);
+        System.out.println("Set contains all values after adding all? " + set.containsAll(values));
+        set.removeAll(values);
+        System.out.println("Is set empty after removing all values? " + set.isEmpty());
+        System.out.println("Does set still contain third? " + set.contains("third"));
     }
 }
