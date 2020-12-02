@@ -43,6 +43,10 @@ public class Node_DC {
         Node_DC head = new Node_DC("1st");
         Node_DC node2 = new Node_DC("2nd");
         head.setNext(node2);
-        System.out.println(head.getNext());
+        System.out.println(head.getNext().getValue());
     }
 }
+// the output
+/**
+2nd
+ */
