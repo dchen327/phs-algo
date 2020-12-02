@@ -145,6 +145,7 @@ public class Set_DC implements Iterable<String> {
     }
 
     public static void main(String[] args) {
+        // test all methods
         Set_DC set = new Set_DC();
         set.add("first");
         set.add("second");
@@ -168,5 +169,27 @@ public class Set_DC implements Iterable<String> {
         set.removeAll(values);
         System.out.println("Is set empty after removing all values? " + set.isEmpty());
         System.out.println("Does set still contain third? " + set.contains("third"));
+        Set_DC set2 = new Set_DC();
+        set2.add("third");
+        System.out.println("Set equals new set? " + set.equals(set2));
+        set.clear();
+        System.out.println("Set equals new set after clearing set? " + set.equals(set2));
     }
 }
+// the output
+/**
+Did we remove second? true
+Set contents:
+first
+third
+Size: 2
+Contains third? true
+Contains eighth? false
+ArrayList: [first, second, fourth, fifth]
+Set contains all values? false
+Set contains all values after adding all? true
+Is set empty after removing all values? false
+Does set still contain third? true
+Set equals new set? true
+Set equals new set after clearing set? false
+ */
