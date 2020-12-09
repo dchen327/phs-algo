@@ -25,10 +25,12 @@ def binary_search(a, x):
 def three_sum(a):
     """ Returns the number of triples in a that sum to 0 """
     t = 0
+    # sorting is nlog(n), but we can ignore it since it's done once
     a = sorted(a)
     for i in range(len(a)):
         for j in range(i + 1, len(a)):
             third_val = -a[i] - a[j]
+            # this binary search gives us the log(n) factor in our runtime
             k = binary_search(a, third_val)  # idx of third value
             # make sure it's a new element (code will work even if a has duplicates)
             if k and k > j:
