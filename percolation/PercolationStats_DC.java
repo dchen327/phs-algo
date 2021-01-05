@@ -20,7 +20,7 @@
  * @David Chen
  * @Java 1.8.0 - 12/18/20
  * 
- * Run with `javac-algs4 Percolation_DC.java && java-algs4 Percolation_DC`
+ * Run with `javac-algs4 PercolationStats_DC.java && java-algs4 PercolationStats_DC <N> <T>`
  * after installing the stuff from algs4.jar
  */
 import edu.princeton.cs.algs4.StdRandom;
