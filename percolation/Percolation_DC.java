@@ -41,9 +41,13 @@ public class Percolation_DC {
         if (row == 1) {
             quickFind.union(quickFindIdx(row, col), top);
         }
-        if (row == size) {
+        if (row == N) {
             quickFind.union(quickFindIdx(row, col), bottom);
         }
+        unionIfValid(row, col, row - 1, col); // up
+        unionIfValid(row, col, row + 1, col); // down        
+        unionIfValid(row, col, row, col - 1); // left
+        unionIfValid(row, col, row, col + 1); // right
     }
 
     // is the site (row, col) open?
