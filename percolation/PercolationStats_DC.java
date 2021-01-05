@@ -81,3 +81,29 @@ public class PercolationStats_DC {
         System.out.println("confidenceHigh()        = " + percolationStats.confidenceHigh());
     }
 }
+// the output
+/**
+200, 100
+mean()                  = 0.59382525
+stddev()                = 0.007937182742407005
+confidenceLow()         = 0.5922695621824882
+confidenceHigh()        = 0.5953809378175118
+
+2, 100000
+mean()                  = 0.6670225
+stddev()                = 0.11772530775597817
+confidenceLow()         = 0.6662928309829237
+confidenceHigh()        = 0.6677521690170762
+
+8, 3000
+mean()                  = 0.5953177083333333
+stddev()                = 0.08273720958949979
+confidenceLow()         = 0.5923569953122362
+confidenceHigh()        = 0.5982784213544304
+
+50, 1000
+mean()                  = 0.591377199999999
+stddev()                = 0.027389637317649766
+confidenceLow()         = 0.5896795726910886
+confidenceHigh()        = 0.5930748273089095
+ */
