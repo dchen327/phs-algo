@@ -22,45 +22,53 @@ public class Percolation_DC {
     private boolean[][] grid; // false is closed
     private WeightedQuickUnionUF quickFind;
     private int N;
+    private int top = 0, bottom;
+    private int numOpen;
 
     // create N-by-N grid, with all sites initially blocked
     public Percolation_DC(int N) {
         this.N = N;
         grid = new boolean[N][N];
         quickFind = new WeightedQuickUnionUF(N * N + 2);
+        bottom = N * N + 1;
+        numOpen = 0;
     }
 
     // open the site (row, col) if it is not open already
     public void open(int row, int col) {
-        grid[row-1][col-1] = true;
+        grid[row - 1][col - 1] = true;
+        numOpen++;
         if (row == 1) {
-            quickFind.union(getQFIndex)
-        }   
+            quickFind.union(quickFindIdx(row, col), top);
+        }
+        if (row == size) {
+            quickFind.union(quickFindIdx(row, col), bottom);
+        }
     }
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
-
+        return grid[row - 1][col - 1];
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
-
+        return quickFind.connected(top, quickFindIdx(row, col));
     }
 
     // number of open sites
     public int numberOfOpenSites() {
-
+        return numOpen;
     }
 
     // does the system percolate?
     public boolean percolates() {
-
+        return quickFind.connected(top, bottom);
     }
 
     // convert row and col to qf index
     private int quickFindIdx(int row, int col) {
-        return (row - 1) * n + col;
+        return (row - 1) * N + col;
     }
 
     // attempt to union if in bounds
@@ -68,6 +76,7 @@ public class Percolation_DC {
         if (0 < row2 && row2 <= N && 0 < col2 && col2 <= N && isOpen(row2, col2)) {
             quickFind.union(quickFindIdx(row1, col1), quickFindIdx(row2, col2));
         }
+    }
 
     // unit testing (required)
     public static void main(String[] args) {
