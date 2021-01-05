@@ -19,9 +19,15 @@ import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation_DC {
+    private boolean[][] grid; // false is closed
+    private WeightedQuickUnionUF quickFind;
+    private int N;
+
     // create N-by-N grid, with all sites initially blocked
     public Percolation_DC(int N) {
-
+        this.N = N;
+        grid = new boolean[N][N];
+        quickFind = new WeightedQuickUnionUF(N * N + 2);
     }
 
     // open the site (row, col) if it is not open already
