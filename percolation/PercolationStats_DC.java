@@ -23,7 +23,50 @@
  * Run with `javac-algs4 Percolation_DC.java && java-algs4 Percolation_DC`
  * after installing the stuff from algs4.jar
  */
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.StdStats;
 
 public class PercolationStats_DC {
+    private int T;
+    private Percolation_DC percolation;
+    private double[] fractions;
 
+    // perform T independent experiments on an N-by-N grid
+    public PercolationStats_DC(int N, int T) {
+        this.T = T;
+        fractions = new double[T];
+        for (int i = 0; i < T; i++) {
+            percolation = new Percolation_DC(N);
+            int numOpen = 0;
+            while (!percolation.percolates()) { // keep looping
+                int row = StdRandom.uniform(n) + 1; // base-1
+                int col = StdRandom.uniform(n) + 1; // base-1
+                if (!percolation.isOpen(row, col)) {
+                    percolation.open(row, col);
+                    openedSites++;
+                }
+            }
+            fractions[i] = openedSites * 1.0 / (n * n);
+        }
+    }
+
+    // sample mean of percolation threshold
+    public double mean() {
+
+    }
+
+    // sample standard deviation of percolation threshold
+    public double stddev() {
+
+    }
+
+    // low  endpoint of 95% confidence interval
+    public double confidenceLow() {
+
+    }
+
+    // high endpoint of 95% confidence interval
+    public double confidenceHigh() {
+
+    }
 }
