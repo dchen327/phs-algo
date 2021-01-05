@@ -39,34 +39,45 @@ public class PercolationStats_DC {
             percolation = new Percolation_DC(N);
             int numOpen = 0;
             while (!percolation.percolates()) { // keep looping
-                int row = StdRandom.uniform(n) + 1; // base-1
-                int col = StdRandom.uniform(n) + 1; // base-1
+                int row = StdRandom.uniform(N) + 1; // base-1
+                int col = StdRandom.uniform(N) + 1; // base-1
                 if (!percolation.isOpen(row, col)) {
                     percolation.open(row, col);
-                    openedSites++;
+                    numOpen++;
                 }
             }
-            fractions[i] = openedSites * 1.0 / (n * n);
+            fractions[i] = numOpen * 1.0 / (N * N);
         }
     }
 
     // sample mean of percolation threshold
     public double mean() {
-
+        return StdStats.mean(fractions);
     }
 
     // sample standard deviation of percolation threshold
     public double stddev() {
-
+        return StdStats.stddev(fractions);
     }
 
     // low  endpoint of 95% confidence interval
     public double confidenceLow() {
-
+        return mean() - ((1.96 * stddev()) / Math.sqrt(T));
     }
 
     // high endpoint of 95% confidence interval
     public double confidenceHigh() {
+        return mean() + ((1.96 * stddev()) / Math.sqrt(T));
+    }
 
+    public static void main(String[] args) {
+        int N = Integer.parseInt(args[0]);
+        int T = Integer.parseInt(args[1]);
+        PercolationStats_DC percolationStats = new PercolationStats_DC(N, T);
+
+        System.out.println("mean()                  = " + percolationStats.mean());
+        System.out.println("stddev()                = " + percolationStats.stddev());
+        System.out.println("confidenceLow()         = " + percolationStats.confidenceLow());
+        System.out.println("confidenceHigh()        = " + percolationStats.confidenceHigh());
     }
 }
