@@ -32,7 +32,10 @@ public class Percolation_DC {
 
     // open the site (row, col) if it is not open already
     public void open(int row, int col) {
-
+        grid[row-1][col-1] = true;
+        if (row == 1) {
+            quickFind.union(getQFIndex)
+        }   
     }
 
     // is the site (row, col) open?
@@ -54,6 +57,17 @@ public class Percolation_DC {
     public boolean percolates() {
 
     }
+
+    // convert row and col to qf index
+    private int quickFindIdx(int row, int col) {
+        return (row - 1) * n + col;
+    }
+
+    // attempt to union if in bounds
+    private void unionIfValid(int row1, int col1, int row2, int col2) {
+        if (0 < row2 && row2 <= N && 0 < col2 && col2 <= N && isOpen(row2, col2)) {
+            quickFind.union(quickFindIdx(row1, col1), quickFindIdx(row2, col2));
+        }
 
     // unit testing (required)
     public static void main(String[] args) {
