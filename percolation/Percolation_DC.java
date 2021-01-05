@@ -84,6 +84,7 @@ public class Percolation_DC {
 
     // unit testing (required)
     public static void main(String[] args) {
+        // Use PercolationStats_DC for further testing
         Percolation_DC percolation = new Percolation_DC(5);
         percolation.open(2, 3); // test opening
         System.out.println("Opened (2, 3)");
@@ -92,8 +93,15 @@ public class Percolation_DC {
         percolation.open(3, 4); // test opening
         System.out.println("Total opened sites: " + percolation.numberOfOpenSites());
         System.out.println("Percolates? " + percolation.percolates());
-        System.out.println("Is (3, 5) full? " + percolation.isFull(3, 5));
+        System.out.println("Is (3, 4) full? " + percolation.isFull(3, 4));
     }
 }
 
 // the output
+/**
+Opened (2, 3)
+Is (2, 3) open?: true
+Total opened sites: 3
+Percolates? false
+Is (3, 4) full? false
+ */
