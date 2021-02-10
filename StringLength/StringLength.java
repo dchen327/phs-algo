@@ -33,9 +33,9 @@ public class StringLength {
         System.out.println("Index 18000: " + names.get(18000));
 
         // print out all the names
-        for (String name : names) {
-            System.out.println(name);
-        }
+        // for (String name : names) {
+        //     System.out.println(name);
+        // }
     }
 }
 // output
