@@ -6,7 +6,7 @@ Use Comparator and a binary search for both lookups.
 
 Run this program with `python3 telephone.py`
 
-Python 3.8
+Python 3.8 - 2/10/21
 Author: David Chen
 '''
 
