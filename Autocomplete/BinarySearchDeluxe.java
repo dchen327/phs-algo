@@ -62,5 +62,19 @@ public class BinarySearchDeluxe {
         // use default comparator
         System.out.println(firstIndexOf(nums, 8, Comparator.<Integer>naturalOrder()));
         System.out.println(lastIndexOf(nums, 8, Comparator.<Integer>naturalOrder()));
+        System.out.println(firstIndexOf(nums, 3, Comparator.<Integer>naturalOrder()));
+        System.out.println(lastIndexOf(nums, 3, Comparator.<Integer>naturalOrder()));
+        System.out.println(firstIndexOf(nums, 1, Comparator.<Integer>naturalOrder()));
+        System.out.println(lastIndexOf(nums, 1, Comparator.<Integer>naturalOrder()));
     }
 }
+
+// the output
+/**
+8
+9
+2
+4
+0
+0
+ */
