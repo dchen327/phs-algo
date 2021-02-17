@@ -72,7 +72,7 @@ public class Autocomplete {
         Term[] terms = new Term[N];
         for (int i = 0; i < N; i++) {
             double weight = fileScan.nextDouble(); // read the next weight
-            String query = fileScan.next(); // read the next query
+            String query = fileScan.nextLine().trim(); // read the next query
             terms[i] = new Term(query, weight); // construct the term
         }
 
@@ -90,6 +90,8 @@ public class Autocomplete {
 }
 // the output
 /*
+using wiktionary.txt with 5
+
 auto
 automobile | 619695.0
 automatic | 424997.0
@@ -138,4 +140,41 @@ have | 4.3465E8
 has | 1.602329E8
 hand | 6.48227E7
 having | 4.15355E7
+
+
+
+using cities.txt with 3
+
+Pr
+Pretoria, South Africa | 1619438.0
+Prague, Czech Republic | 1165581.0
+Pristina, Kosovo | 550000.0
+Prince
+Prince George, British Columbia, Canada | 65558.0
+Prince Albert, Saskatchewan, Canada | 34609.0
+Prince Edward, Ontario, Canada | 25496.0
+Princet
+Princeton, Florida, United States | 22038.0
+Princeton Meadows, New Jersey, United States | 13834.0
+Princeton, New Jersey, United States | 12307.0
+Bos
+Boston, Massachusetts, United States | 617594.0
+Boshan, China | 153596.0
+Bossier City, Louisiana, United States | 61315.0
+San
+Santiago, Chile | 4837295.0
+Santo Domingo, Dominican Republic | 2201941.0
+Sanaa, Yemen | 1937451.0
+San 
+San Antonio, Texas, United States | 1327407.0
+San Diego, California, United States | 1307402.0
+San Jose, California, United States | 945942.0
+M
+Mumbai, India | 1.2691836E7
+Mexico City, Distrito Federal, Mexico | 1.2294193E7
+Manila, Philippines | 1.0444527E7
+Al M
+Al Maḩallah al Kubrá, Egypt | 431052.0
+Al Manşūrah, Egypt | 420195.0
+Al Mubarraz, Saudi Arabia | 290802.0
 */
