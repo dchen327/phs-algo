@@ -90,5 +90,52 @@ public class Autocomplete {
 }
 // the output
 /*
-
+auto
+automobile | 619695.0
+automatic | 424997.0
+comp
+company | 1.33159E7
+complete | 7803980.0
+companion | 6038490.0
+completely | 5205030.0
+comply | 4481770.0
+the
+the | 5.6271872E9
+they | 3.340398E8
+their | 2.820265E8
+them | 2.509917E8
+there | 1.9612E8
+hello
+hi
+his | 8.799755E8
+him | 3.971997E8
+himself | 8.63478E7
+high | 2.66672E7
+history | 1.41958E7
+pha
+phase | 842716.0
+phantom | 649837.0
+phases | 530613.0
+pho
+photograph | 909488.0
+photographs | 566927.0
+phoebe | 448019.0
+ab
+about | 1.414687E8
+above | 2.71641E7
+able | 2.00145E7
+absence | 5350280.0
+absolutely | 5139440.0
+st
+still | 6.40067E7
+stood | 3.08025E7
+state | 2.77682E7
+strong | 2.00224E7
+story | 1.80998E7
+ha
+had | 6.139336E8
+have | 4.3465E8
+has | 1.602329E8
+hand | 6.48227E7
+having | 4.15355E7
 */
