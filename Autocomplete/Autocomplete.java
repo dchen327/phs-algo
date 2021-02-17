@@ -7,6 +7,9 @@
  * terms in descending order by weight. Organize your program by creating an immutable 
  * data type Autocomplete with the following API:
  * 
+ * Run like this:
+ * `javac Autocomplete.java && java Autocomplete wiktionary.txt 5`
+ * 
  * @David Chen
  * @Java 1.8.0 - 2/17/21
  */
@@ -76,13 +79,13 @@ public class Autocomplete {
 
         // read in queries from standard input and print out the top k matching terms
         int k = Integer.parseInt(args[1]);
-        // Autocomplete autocomplete = new Autocomplete(terms);
-        // Scanner scan = new Scanner(System.in);
-        // while (scan.hasNextLine()) {
-        //     String prefix = scan.readLine();
-        //     Term[] results = autocomplete.allMatches(prefix);
-        //     for (int i = 0; i < Math.min(k, results.length); i++)
-        //         System.out.println(results[i]);
-        // }
+        Autocomplete autocomplete = new Autocomplete(terms);
+        Scanner scan = new Scanner(System.in);
+        while (scan.hasNextLine()) {
+            String prefix = scan.nextLine();
+            Term[] results = autocomplete.allMatches(prefix);
+            for (int i = 0; i < Math.min(k, results.length); i++)
+                System.out.println(results[i]);
+        }
     }
 }
