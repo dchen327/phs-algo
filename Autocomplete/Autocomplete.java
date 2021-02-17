@@ -75,7 +75,6 @@ public class Autocomplete {
             String query = fileScan.next(); // read the next query
             terms[i] = new Term(query, weight); // construct the term
         }
-        System.out.println(terms[10]);
 
         // read in queries from standard input and print out the top k matching terms
         int k = Integer.parseInt(args[1]);
@@ -89,3 +88,7 @@ public class Autocomplete {
         }
     }
 }
+// the output
+/*
+
+*/

@@ -33,7 +33,7 @@ public class Term implements Comparable<Term> {
     public static Comparator<Term> byReverseWeightOrder() {
         Comparator reverseWeightOrder = new Comparator<Term>() {
             public int compare(Term t1, Term t2) {
-                return Double.compare(t1.weight, t2.weight);
+                return -Double.compare(t1.weight, t2.weight); // use default, but negate
             }
         };
         return reverseWeightOrder;
@@ -89,7 +89,7 @@ public class Term implements Comparable<Term> {
         System.out.println(t1.toString());
         System.out.println(t2.toString());
         System.out.println(t1.compareTo(t2)); // should be > 0
-        System.out.println(byReverseWeightOrder().compare(t1, t2)); // -1
+        System.out.println(byReverseWeightOrder().compare(t1, t2)); // 1
         System.out.println(byPrefixOrder(8).compare(t1, t2)); // 1
     }
 }
@@ -99,6 +99,6 @@ public class Term implements Comparable<Term> {
 Hello World | 3.0
 Hello Algorithms | 8.0
 22
--1
+1
 1
 */
