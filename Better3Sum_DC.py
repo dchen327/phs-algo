@@ -8,7 +8,7 @@ Python 3.8.2 - 12/9/20
 
 
 def binary_search(a, x):
-    """ Returns the index of x in a if x is in a, else returns None 
+    """ Returns the index of x in a if x is in a, else returns None
         By returning the index as well, our code works for duplicates.
     """
     l, r = 0, len(a)
