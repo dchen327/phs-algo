@@ -74,11 +74,13 @@ public class BST<Key extends Comparable<Key>, Value> {
         private Value val; // associated data
         private Node left, right; // left and right subtrees
         private int size; // number of nodes in subtree
+        private int treeHeight; // height of the tree the node belongs to
 
         public Node(Key key, Value val, int size) {
             this.key = key;
             this.val = val;
             this.size = size;
+            this.treeHeight = 1;  // default to height of 1 (just a single node)
         }
     }
 
@@ -184,6 +186,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         else
             x.val = val;
         x.size = 1 + size(x.left) + size(x.right);
+        x.treeHeight = 1 + Math.max(height2(x.left), height2(x.right));
         return x;
     }
 
@@ -540,6 +543,25 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
+     * Returns the height of the BST (for debugging).
+     * Not recursive, linear space + constant time
+     * Core idea: add an instance field to each node that stores
+     * the height of the tree it's in, and when we insert/delete nodes
+     * update this for all nodes (slow to update, fast to query)
+     *
+     * @return the height of the BST (a 1-node tree has height 0)
+     */
+    public int height2() {
+        return height2(root);
+    }
+
+    private int height2(Node x) {
+        if (x == null)
+            return -1;
+        return x.treeHeight;
+    }
+
+    /**
      * Returns the keys in the BST in level order (for debugging).
      *
      * @return the keys in the BST in level order traversal
@@ -634,5 +656,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 
         for (String s : st.keys())
             StdOut.println(s + " " + st.get(s));
+        StdOut.println("Height (recursive method): " + st.height());
+        StdOut.println("Height (linear space/constant time): " + st.height2());
     }
 }
