@@ -80,7 +80,7 @@ public class BST<Key extends Comparable<Key>, Value> {
             this.key = key;
             this.val = val;
             this.size = size;
-            this.treeHeight = 1;  // default to height of 1 (just a single node)
+            this.treeHeight = 0;  // default to height of 0 (just a single node)
         }
     }
 
@@ -186,7 +186,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         else
             x.val = val;
         x.size = 1 + size(x.left) + size(x.right);
-        x.treeHeight = 1 + Math.max(height2(x.left), height2(x.right));
+        x.treeHeight = 1 + Math.max(height2(x.left), height2(x.right)); // update tree height value
         return x;
     }
 
