@@ -660,3 +660,37 @@ public class BST<Key extends Comparable<Key>, Value> {
         StdOut.println("Height (linear space/constant time): " + st.height2());
     }
 }
+
+// the output
+/*
+S 0
+E 12
+X 7
+A 8
+R 3
+C 4
+H 5
+M 9
+L 11
+P 10
+
+A 8
+C 4
+E 12
+H 5
+L 11
+M 9
+P 10
+R 3
+S 0
+X 7
+Height (recursive method): 5
+Height (linear space/constant time): 5
+
+
+As we can see, both the recursive method and linear space/constant time methods
+return the same height. For height2, I added an instance field called treeHeight to
+all the nodes, which we can simply return when we call height2. Of course this means
+that we need to spend time updating these values whenver nodes are inserted/deleted, so it's 
+slower initially but pays off in the long run with many height2 calls.
+*/
