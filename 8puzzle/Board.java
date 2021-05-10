@@ -44,7 +44,7 @@ public class Board {
             c1 = i % size;
             for (int r2 = 0; r2 < size; r2++) {
                 for (int c2 = 0; c2 < size; c2++) {
-                    if (i + 1 == board[r2][c2]) {
+                    if (board[r2][c2] != 0 && i + 1 == board[r2][c2]) {
                         manhattan += Math.abs(r1 - r2) + Math.abs(c1 - c2);
                     }
                 }
@@ -55,10 +55,10 @@ public class Board {
 
     public boolean isGoal() { // is this board the goal board?
         int r, c;
-        for (int i = 1; i < size * size; i++) {
+        for (int i = 0; i < size * size - 1; i++) { // ignore bottom right
             r = i / size; // convert line to row/col
             c = i % size;
-            if (board[r][c] != i) {
+            if (board[r][c] != i + 1) {
                 return false;
             }
         }
@@ -66,6 +66,12 @@ public class Board {
     }
 
     public boolean isSolvable() { // is this board solvable?
+        int r, c, numInversions = 0;
+        for (int i = 0; i < size * size; i++) {
+            r = i / size; // convert line to row/col
+            c = i % size;
+
+        }
         return true;
     }
 
@@ -91,9 +97,15 @@ public class Board {
 
     public static void main(String[] args) { // unit tests (not graded)
         int[][] blocks = { { 8, 1, 3 }, { 4, 0, 2 }, { 7, 6, 5 }, };
-        Board board = new Board(blocks);
-        System.out.println(board);
-        System.out.println("Hamming: " + board.hamming());
-        System.out.println("Manhattan: " + board.manhattan());
+        Board board1 = new Board(blocks);
+        System.out.println(board1);
+        System.out.println("Hamming: " + board1.hamming());
+        System.out.println("Manhattan: " + board1.manhattan());
+        System.out.println("Is goal: " + board1.isGoal());
+        int[][] blocks2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 }, };
+        Board board2 = new Board(blocks2);
+        System.out.println(board2);
+        System.out.println("Is goal: " + board2.isGoal());
+        System.out.println("Board 1 = Board 2? " + board1.equals(board2));
     }
 }
