@@ -123,8 +123,31 @@ public class Board {
 
     public Iterable<Board> neighbors() { // all neighboring boards
         ArrayList<Board> neighbors = new ArrayList<Board>();
+        int blankR = -1, blankC = -1;
+        for (int r = 0; r < size; r++) {
+            for (int c = 0; c < size; c++) {
+                if (board[r][c] == 0) {
+                    blankR = r;
+                    blankC = c;
+                    break;
+                }
+            }
+        }
 
+        // check for possible swaps
+        int newR, newC, dr, dc;
+        int[][] swaps = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 }, };
+        for (int[] swap : swaps) {
+            dr = swap[0];
+            dc = swap[1];
+            newR = blankR + dr;
+            newC = blankC + dc;
+            if (0 <= newR && newR < size && 0 <= newC && newC < size) { // in bounds
+                neighbors.add(swapAndCreate(this, blankR, blankC, newR, newC));
+            }
+        }
         return neighbors;
+
     }
 
     public String toString() { // string representation of this board (in the output format specified below)
@@ -150,6 +173,11 @@ public class Board {
         System.out.println("Manhattan: " + board1.manhattan());
         System.out.println("Is goal: " + board1.isGoal());
         System.out.println("Solvable? " + board1.isSolvable());
+        System.out.println("Neighbors");
+        for (Board neighboard : board1.neighbors()) {
+            System.out.println(neighboard);
+        }
+        System.out.println("------------------------------");
         int[][] blocks2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 }, };
         Board board2 = new Board(blocks2);
         System.out.println(board2);
