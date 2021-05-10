@@ -188,3 +188,42 @@ public class Board {
         System.out.println("Board 1 = Board 2? " + board1.equals(board2));
     }
 }
+/* the output
+
+8 1 3 
+4 0 2 
+7 6 5 
+
+Hamming: 5
+Manhattan: 10
+Is goal: false
+Solvable? false
+Neighbors
+8 0 3 
+4 1 2 
+7 6 5 
+
+8 1 3 
+4 6 2 
+7 0 5 
+
+8 1 3 
+0 4 2 
+7 6 5 
+
+8 1 3 
+4 2 0 
+7 6 5 
+
+------------------------------
+1 2 3 
+4 5 6 
+7 8 0 
+
+Hamming: 0
+Manhattan: 0
+Is goal: true
+Solvable? true
+Board 1 = Board 2? false
+
+*/
