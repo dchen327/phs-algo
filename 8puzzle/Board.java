@@ -1,3 +1,4 @@
+
 /**
  * Write a program to solve the 8-puzzle problem (and its natural generalizations) using the A* search algorithm.
  * 
@@ -6,10 +7,8 @@
  * @author Joann Shi and David Chen
  * @version Java 1.8.0 - 5/8/21
  */
-/*
 
-
-*/
+import java.util.ArrayList;
 
 public class Board {
     private int[][] board;
@@ -103,9 +102,30 @@ public class Board {
         return y.toString().equals(toString());
     }
 
-    // public Iterable<Board> neighbors() { // all neighboring boards
+    private Board swapAndCreate(Board board, int r1, int c1, int r2, int c2) {
+        // swap positions and return new Board
+        int[][] tiles = board.getBoard();
+        int size = board.size();
+        int[][] newTiles = new int[size][size];
+        for (int r = 0; r < size; r++) {
+            for (int c = 0; c < size; c++) {
+                if (r == r1 && c == c1) {
+                    newTiles[r][c] = tiles[r2][c2];
+                } else if (r == r2 && c == c2) {
+                    newTiles[r][c] = tiles[r1][c1];
+                } else {
+                    newTiles[r][c] = tiles[r][c];
+                }
+            }
+        }
+        return new Board(newTiles);
+    }
 
-    // }
+    public Iterable<Board> neighbors() { // all neighboring boards
+        ArrayList<Board> neighbors = new ArrayList<Board>();
+
+        return neighbors;
+    }
 
     public String toString() { // string representation of this board (in the output format specified below)
         String s = "";
@@ -116,6 +136,10 @@ public class Board {
             s += '\n';
         }
         return s;
+    }
+
+    public int[][] getBoard() { // simple getter
+        return board;
     }
 
     public static void main(String[] args) { // unit tests (not graded)
