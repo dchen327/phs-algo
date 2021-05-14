@@ -65,7 +65,7 @@ public class Solver {
 
 		SearchNode initSN;
 
-		while (true) {
+		while (!initPQ.isEmpty()) {
 			initSN = initPQ.delMin();
 
 			if (initSN.board.isGoal()) {
