@@ -177,7 +177,7 @@ public class Board {
         for (Board neighboard : board1.neighbors()) {
             System.out.println(neighboard);
         }
-        System.out.println("------------------------------");
+        System.out.println("------------------------------\n");
         int[][] blocks2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 }, };
         Board board2 = new Board(blocks2);
         System.out.println(board2);

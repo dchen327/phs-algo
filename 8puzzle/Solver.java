@@ -8,12 +8,11 @@ import edu.princeton.cs.algs4.StdOut;
  * 
  * The problem. The 8-puzzle problem (Links to an external site.) is a puzzle invented and popularized by Noyes Palmer Chapman in the 1870s. It is played on a 3-by-3 grid with 8 square blocks labeled 1 through 8 and a blank square. Your goal is to rearrange the blocks so that they are in order, using as few moves as possible. You are permitted to slide blocks horizontally or vertically into the blank square.
  * 
+ * Run with `javac-algs4 Solver.java && java-algs4 Solver`
+ * 
  * @author Joann Shi and David Chen
  * @version Java 1.8.0 - 5/8/21
  */
-/*
-
-*/
 
 public class Solver {
 
