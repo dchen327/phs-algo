@@ -59,25 +59,27 @@ public class Solver {
 	// find a solution to the initial board (using the A* algorithm)
 	public Solver(Board initial) {
 
+		solvable = initial.isSolvable();
+
 		initPQ = new MinPQ<SearchNode>();
 
 		initPQ.insert(new SearchNode(initial, 0, null));
 
-		SearchNode initSN;
+		SearchNode initSN = new SearchNode(initial); // placeholder to ensure initSN is always initialized
 
 		while (!initPQ.isEmpty()) {
 			initSN = initPQ.delMin();
 
 			if (initSN.board.isGoal()) {
 				finalBoard = initSN;
-				solvable = true;
 				break;
 			}
 
-		}
-		for (Board initBoard : initSN.board.neighbors()) {
-			if (initSN.previous == null || !initBoard.equals(initSN.previous.board))
-				initPQ.insert(new SearchNode(initBoard, initSN.moves + 1, initSN));
+			for (Board initBoard : initSN.board.neighbors()) {
+				if (initSN.previous == null || !initBoard.equals(initSN.previous.board))
+					initPQ.insert(new SearchNode(initBoard, initSN.moves + 1, initSN));
+			}
+
 		}
 
 	}
