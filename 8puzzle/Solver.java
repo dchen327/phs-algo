@@ -76,8 +76,14 @@ public class Solver {
 			}
 
 			for (Board initBoard : initSN.board.neighbors()) {
-				if (initSN.previous == null || !initBoard.equals(initSN.previous.board))
+				//if (initSN.previous == null || !initBoard.equals(initSN.previous.board))
+				if (initSN.previous == null || !initSN.previous.board.equals(initBoard))
+
+				{
 					initPQ.insert(new SearchNode(initBoard, initSN.moves + 1, initSN));
+					System.out.println("test");
+				}
+
 			}
 
 		}
@@ -126,7 +132,8 @@ public class Solver {
 		//	            blocks[i][j] = in.readInt();
 		//	    Board initial = new Board(blocks);
 
-		int[][] blocks = { { 0, 1, 3 }, { 4, 2, 5 }, { 7, 8, 6 }, };
+		//int[][] blocks = { { 0, 1, 3 }, { 4, 2, 5 }, { 7, 8, 6 }, };
+		int[][] blocks = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 0, 15 }, };
 		Board initial = new Board(blocks);
 
 		// solve the puzzle
@@ -144,27 +151,44 @@ public class Solver {
 }
 
 /**
-the output
-
 Minimum number of moves = 4
-0 1 3 
-4 2 5 
-7 8 6 
+3
+ 0  1  3 
+ 4  2  5 
+ 7  8  6 
 
-1 0 3 
-4 2 5 
-7 8 6 
+3
+ 1  0  3 
+ 4  2  5 
+ 7  8  6 
 
-1 2 3 
-4 0 5 
-7 8 6 
+3
+ 1  2  3 
+ 4  0  5 
+ 7  8  6 
 
-1 2 3 
-4 5 0 
-7 8 6 
+3
+ 1  2  3 
+ 4  5  0   
+ 7  8  6 
 
-1 2 3 
-4 5 6 
-7 8 0 
+3
+ 1  2  3 
+ 4  5  6 
+ 7  8  0
  
+ Testing 4x4
+ 
+ Minimum number of moves = 1
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 0 15 
+
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 15 0 
+
+
  */
