@@ -13,9 +13,11 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Digraph;
 
 public class WordNet {
 
+    private Digraph wordNet;
     private HashMap<Integer, String> synsets;
     private HashMap<String, ArrayList<Integer>> idToSynset;
 
@@ -47,7 +49,18 @@ public class WordNet {
 
     // read hypernyms from file
     private void readHypernyms(String hypernyms) {
+        Digraph g = new Digraph(idToSynset.size());
 
+        In in = new In(hypernyms);
+        while (in.hasNextLine()) {
+            String line = in.readLine();
+            String[] parts = line.split(",");
+            int synset = Integer.parseInt(parts[0]);
+            for (int i = 1; i < tokens.length; i++) {
+                int hypernym = Integer.parseInt(parts[i]);
+                wordNet.addEdge(synset, hypernym);
+            }
+        }
     }
 
     // returns all WordNet nouns
