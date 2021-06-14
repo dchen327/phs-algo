@@ -2,7 +2,7 @@
 /**
  * Shortest ancestral path. An ancestral path between two vertices v and w in a digraph is a directed path from v to a common ancestor x, together with a directed path from w to the same ancestor x. A shortest ancestral path is an ancestral path of minimum total length. For example, in the digraph at left (digraph1.txt), the shortest ancestral path between 3 and 11 has length 4 (with common ancestor 1). In the digraph at right (digraph2.txt), one ancestral path between 1 and 5 has length 4 (with common ancestor 5), but the shortest ancestral path has length 2 (with common ancestor 0).
 
-Run with `javac-algs4 WordNet.java && java-algs4 WordNet`
+Run with `javac-algs4 SAP.java && java-algs4 SAP digraph1.txt `
  * 
  * @author David Chen and Joann Shi
  * @version Java 1.8.0 - 6/11/21
@@ -35,11 +35,6 @@ public class SAP {
         return !test.hasCycle(); // directed cycle means it isn't a DAG
     }
 
-    // // is the digraph a rooted DAG?
-    // public boolean isRootedDAG() {
-    // TODO
-    // }
-
     // length of shortest ancestral path between v and w; -1 if no such path
     public int length(int v, int w) {
         shortestAncestralPath(v, w);
@@ -61,12 +56,34 @@ public class SAP {
     }
 
     // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
-    // public int length(Iterable<Integer> v, Iterable<Integer> w) {
-    // }
+    public int length(Iterable<Integer> v, Iterable<Integer> w) {
+        int dist = 1000000000;
+        for (int vID : v) {
+            for (int wID : w) {
+                dist = Math.min(dist, length(vID, wID));
+            }
+        }
 
-    // // a common ancestor that participates in shortest ancestral path; -1 if no such path
-    // public int ancestor(Iterable<Integer> v, Iterable<Integer> w) {
-    // }
+        if (dist == 1000000000) { // not found
+            return -1;
+        }
+        return dist;
+    }
+
+    // a common ancestor that participates in shortest ancestral path; -1 if no such path
+    public int ancestor(Iterable<Integer> v, Iterable<Integer> w) {
+        int minDist = length(v, w); // use method above
+        for (int vID : v) {
+            for (int wID : w) {
+                int dist = length(vID, wID);
+                if (dist == minDist) {
+                    int ancestor = ancestor(vID, wID);
+                    return ancestor;
+                }
+            }
+        }
+        return -1; // no such path
+    }
 
     private void shortestAncestralPath(int v, int w) {
         BreadthFirstDirectedPaths vBFS = new BreadthFirstDirectedPaths(graph, v);
@@ -115,3 +132,15 @@ public class SAP {
         }
     }
 }
+
+// the output
+/*
+3 11
+length = 4, ancestor = 1
+9 12
+length = -1, ancestor = -1
+7 2
+length = 4, ancestor = 0
+1 6
+length = 2, ancestor = 1
+*/

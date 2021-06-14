@@ -21,18 +21,21 @@ public class WordNet {
 
     private Digraph wordNet;
     private HashMap<Integer, String> synsets;
-    private HashMap<String, ArrayList<Integer>> synsetToId;
+    private HashMap<String, ArrayList<Integer>> synsetToID;
+    private SAP sap;
 
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {
         readSynsets(synsets);
         readHypernyms(hypernyms);
+        wordNet = new Digraph(this.synsets.size());
+        sap = new SAP(wordNet);
     }
 
     // read synsets from file
     private void readSynsets(String synsetFile) {
         synsets = new HashMap<Integer, String>();
-        synsetToId = new HashMap<String, ArrayList<Integer>>();
+        synsetToID = new HashMap<String, ArrayList<Integer>>();
         In in = new In(synsetFile);
 
         while (in.hasNextLine()) {
@@ -43,16 +46,16 @@ public class WordNet {
             String[] nouns = parts[1].split(" ");
             for (String noun : nouns) {
                 if (!synsets.containsKey(noun)) {
-                    synsetToId.put(noun, new ArrayList<>());
+                    synsetToID.put(noun, new ArrayList<>());
                 }
-                synsetToId.get(noun).add(id);
+                synsetToID.get(noun).add(id);
             }
         }
     }
 
     // read hypernyms from file
     private void readHypernyms(String hypernyms) {
-        Digraph g = new Digraph(synsetToId.size());
+        Digraph g = new Digraph(synsetToID.size());
 
         In in = new In(hypernyms);
         while (in.hasNextLine()) {
@@ -68,7 +71,7 @@ public class WordNet {
 
     // returns all WordNet nouns
     public Iterable<String> nouns() {
-        return synsetToId.keySet();
+        return synsetToID.keySet();
     }
 
     // is the word a WordNet noun?
@@ -78,13 +81,15 @@ public class WordNet {
 
     // distance between nounA and nounB (defined below)
     public int distance(String nounA, String nounB) {
-        return 0; // TODO
+        return sap.length(synsetToID.get(nounA), synsetToID.get(nounB));
     }
 
     // a synset (second field of synsets.txt) that is the common ancestor of nounA and nounB
     // in a shortest ancestral path (defined below)
     public String sap(String nounA, String nounB) {
-        return ""; // TODO
+        ArrayList<Integer> v = synsetToID.get(nounA);
+        ArrayList<Integer> w = synsetToID.get(nounB);
+        return synsets.get(sap.ancestor(v, w));
     }
 
     // do unit testing of this class
