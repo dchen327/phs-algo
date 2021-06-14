@@ -27,8 +27,8 @@ public class WordNet {
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {
         readSynsets(synsets);
-        readHypernyms(hypernyms);
         wordNet = new Digraph(this.synsets.size());
+        readHypernyms(hypernyms);
         sap = new SAP(wordNet);
     }
 
@@ -67,6 +67,8 @@ public class WordNet {
                 wordNet.addEdge(synset, hypernym);
             }
         }
+
+        sap = new SAP(g);
     }
 
     // returns all WordNet nouns
@@ -94,6 +96,25 @@ public class WordNet {
 
     // do unit testing of this class
     public static void main(String[] args) {
-        // unit testing in SAP.java
+        WordNet wordnet = new WordNet("synsets.txt", "hypernyms.txt");
+        String s1 = "moon";
+        String s2 = "sun";
+        System.out.println("SAP of " + s1 + " and " + s2 + ": " + wordnet.sap(s1, s2));
+        s1 = "baseball";
+        s2 = "soccer";
+        System.out.println("SAP of " + s1 + " and " + s2 + ": " + wordnet.sap(s1, s2));
+        s1 = "banana";
+        s2 = "apple";
+        System.out.println("SAP of " + s1 + " and " + s2 + ": " + wordnet.sap(s1, s2));
+        s1 = "book";
+        s2 = "purple";
+        System.out.println("SAP of " + s1 + " and " + s2 + ": " + wordnet.sap(s1, s2));
     }
 }
+// the output
+/*
+SAP of moon and sun: physical_entity
+SAP of baseball and soccer: field_game
+SAP of banana and apple: vascular_plant tracheophyte
+SAP of book and purple: entity
+*/
